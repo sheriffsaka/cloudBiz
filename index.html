@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+icon" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CraveBiZ AI - Invoice Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Shim process.env safely
+      if (typeof window.process === 'undefined') {
+        window.process = { env: { API_KEY: "" } };
+      } else if (typeof window.process.env === 'undefined') {
+        window.process.env = { API_KEY: "" };
+      }
+      
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                '50': '#eff6ff',
+                '100': '#dbeafe',
+                '200': '#bfdbfe',
+                '300': '#93c5fd',
+                '400': '#60a5fa',
+                '500': '#3b82f6',
+                '600': '#2563eb',
+                '700': '#1d4ed8',
+                '800': '#1e40af',
+                '900': '#1e3a8a',
+                '950': '#172554',
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @media print {
+        @page {
+          size: A4;
+          margin: 1cm;
+        }
+        body * {
+          visibility: hidden;
+        }
+        #invoice-container, #invoice-container *, #receipt-container, #receipt-container *, #plain-invoice-container, #plain-invoice-container * {
+          visibility: visible;
+        }
+        #invoice-container, #receipt-container, #plain-invoice-container {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          box-sizing: border-box; 
+          padding: 0;
+          margin: 0;
+          min-height: 29.7cm;
+        }
+        .print-hidden {
+          display: none;
+        }
+      }
+      .word-export-hidden {
+        display: none !important;
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.26.0",
+        "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.1/+esm"
+      }
+    }
+    </script>
+    <script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.min.js" defer></script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
